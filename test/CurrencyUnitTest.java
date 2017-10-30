@@ -13,4 +13,16 @@ public class CurrencyUnitTest {
     public void shouldHaveNameGlob() {
         assertEquals("glob", new CurrencyUnit("glob is I").getName());
     }
+
+    @Test
+    public void shouldEqualV() {
+        assertEquals("V", new CurrencyUnit("prok is V").getValue());
+    }
+
+    @Test
+    public void shouldHaveNameProk() {
+        assertEquals("prok", new CurrencyUnit("prok is V").getName());
+    }
+
+
 }
