@@ -18,17 +18,14 @@ public class CurrencyUnit extends StatementReader {
         statement = line;
         return !statement.endsWith("?") && !isCreditStatement(line);
     }
-
-    @Override
-    boolean isCreditStatement(String line) {
-        return statement.contains("Credits");
-    }
-
+    
     @Override
     void setValue() {
-        String[] nameAndValue = statement.split(" is ");
-        name = nameAndValue[0];
-        value = new Numeral(nameAndValue[1]);
-        Runner.UNIT_VALUES.put(name, value);
+        if(isUnitStatement(statement)) {
+            String[] nameAndValue = statement.split(" is ");
+            name = nameAndValue[0];
+            value = new Numeral(nameAndValue[1]);
+            Runner.UNIT_VALUES.put(name, value);
+        }
     }
 }
