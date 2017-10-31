@@ -25,4 +25,12 @@ public class Numeral {
     public Integer getValue() {
         return value;
     }
+
+    public Integer add(Numeral next) {
+        if (next.value > this.value){
+            return next.value - this.value;
+        } else {
+            return this.value + next.value;
+        }
+    }
 }
