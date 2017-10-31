@@ -24,13 +24,17 @@ public class Numeral {
 
     private void setValue() {
         String[] digits = name.split("");
+        Integer subtotal;
         if (name.length() == 1){
             value = NUMERAL_VALUES.get(name);
         } else if (name.length() == 2){
             value = new Numeral(digits[0]).add(new Numeral(digits[1]));
         } else if(name.length() == 3){
-            Integer subtotal = new Numeral(digits[1] + digits[2]).value;
+            subtotal = new Numeral(digits[1] + digits[2]).value;
             value = new Numeral(digits[0]).value + subtotal;
+        } else if(name.length() == 4){
+            subtotal = new Numeral(digits[2] + digits[3]).value;
+            value = new Numeral(digits[0] + digits[1]).value + subtotal;
         }
     }
 

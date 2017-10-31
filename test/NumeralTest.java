@@ -16,26 +16,29 @@ public class NumeralTest {
 
     @Test
     public void XVShouldHaveValue15() {
-        assertEquals(new Integer(15), new Numeral("X").add(new Numeral("V")));
-    }
-
-    @Test
-    public void IVShouldHaveValue4() {
-        assertEquals(new Integer(4), new Numeral("I").add(new Numeral("V")));
-    }
-
-    @Test
-    public void XVShouldHaveValue15NoAdd() {
         assertEquals(new Integer(15), new Numeral("XV").getValue());
     }
 
     @Test
-    public void IVShouldHaveValue4NoAdd() {
+    public void IVShouldHaveValue4() {
         assertEquals(new Integer(4), new Numeral("IV").getValue());
     }
 
     @Test
     public void XIVShouldHaveValue14() {
         assertEquals(new Integer(14), new Numeral("XIV").getValue());
+    }
+
+    @Test
+    public void XXXShouldHaveValue30() {
+        assertEquals(new Integer(30), new Numeral("XXX").getValue());
+    }
+    @Test
+    public void XIXShouldHaveValue19() {
+        assertEquals(new Integer(19), new Numeral("XIX").getValue());
+    }
+    @Test
+    public void XXIXShouldHaveValue29() {
+        assertEquals(new Integer(29), new Numeral("XXIX").getValue());
     }
 }
