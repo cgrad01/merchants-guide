@@ -1,3 +1,3 @@
 public interface Parsable {
-    void parse();
+    void parse(String line);
 }

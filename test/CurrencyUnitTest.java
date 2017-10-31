@@ -1,6 +1,8 @@
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class CurrencyUnitTest {
 
@@ -22,5 +24,15 @@ public class CurrencyUnitTest {
     @Test
     public void shouldHaveNameProk() {
         assertEquals("prok", new CurrencyUnit("prok is V").getName());
+    }
+
+    @Test
+    public void shouldbeStatement() {
+        assertTrue( new CurrencyUnit("prok is V").isStatement());
+    }
+
+    @Test
+    public void shouldntbeQuestion() {
+        assertFalse( new CurrencyUnit("prok is V?").isStatement());
     }
 }

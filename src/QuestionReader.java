@@ -1,5 +1,5 @@
 abstract class QuestionReader implements Parsable {
-    public void parse(){
+    public void parse(String line){
         if (isQuestion()){
             setSubject();
             setQuantity();

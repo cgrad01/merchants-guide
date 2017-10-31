@@ -1,5 +1,5 @@
 abstract class StatementReader implements Parsable {
-    public void parse(){
+    public void parse(String line){
         if (isStatement()){
             setQuantity();
             setValue();

@@ -1,4 +1,5 @@
-public class CurrencyUnit {
+public class CurrencyUnit extends StatementReader {
+    private String statement;
     private String name;
     private Numeral value;
 
@@ -7,10 +8,13 @@ public class CurrencyUnit {
     }
 
     private void evaluate(String statement) {
-        String[] nameAndValue = new String[2];
-        nameAndValue = statement.split(" is ");
-        name = nameAndValue[0];
-        value = new Numeral(nameAndValue[1]);
+        this.statement = statement;
+        if(isStatement()) {
+            String[] nameAndValue = new String[2];
+            nameAndValue = statement.split(" is ");
+            name = nameAndValue[0];
+            value = new Numeral(nameAndValue[1]);
+        }
     }
 
     public String getName() {
@@ -21,4 +25,18 @@ public class CurrencyUnit {
         return value;
     }
 
+    @Override
+    boolean isStatement() {
+        return !statement.endsWith("?");
+    }
+
+    @Override
+    void setQuantity() {
+
+    }
+
+    @Override
+    void setValue() {
+
+    }
 }
