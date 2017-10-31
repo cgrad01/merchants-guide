@@ -10,10 +10,6 @@ public class Runner {
 
     public static HashMap<String, Numeral> UNIT_VALUES = new HashMap<String, Numeral>() {};
 
-    private static void execute(Parsable parsable, String line) {
-        parsable.parse(line);
-    }
-
     public static void main(String[] args) throws IOException {
         BufferedReader br =  new BufferedReader(new FileReader("./input.txt"));
         Parsable[] parsers = {new CurrencyUnit()};
