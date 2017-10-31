@@ -16,7 +16,7 @@ public class UnitConverter extends QuestionReader {
     void setSubject() {
         subject = "";
         for (String resource : Runner.RESOURCE_VALUES.keySet()) {
-            if(question.contains(resource)){
+            if (question.contains(resource)) {
                 subject = resource;
             }
         }
@@ -46,17 +46,9 @@ public class UnitConverter extends QuestionReader {
     @Override
     void displayAnswer() {
         if (question.contains("Credits")) {
-            Runner.QUESTION_ANSWERS.add(quantity.trim() + " " + subject.trim() + " is " + Runner.RESOURCE_VALUES.get(subject)*value);
+            Runner.QUESTION_ANSWERS.add(quantity.trim() + " " + subject.trim() + " is " + Runner.RESOURCE_VALUES.get(subject) * value);
         } else {
             Runner.QUESTION_ANSWERS.add(quantity.trim() + " is " + value);
         }
-    }
-
-    @Override
-    void resetLocals() {
-        question = "";
-        quantity = "";
-        subject = "";
-        value = 0;
     }
 }
