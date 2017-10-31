@@ -9,10 +9,10 @@ import java.util.HashMap;
 public class Runner {
 
     public static HashMap<String, Numeral> UNIT_VALUES = new HashMap<String, Numeral>() {};
-
+    public static ArrayList<String> QUESTION_ANSWERS = new ArrayList<>();
     public static void main(String[] args) throws IOException {
         BufferedReader br =  new BufferedReader(new FileReader("./input.txt"));
-        Parsable[] parsers = {new CurrencyUnit()};
+        Parsable[] parsers = {new CurrencyUnit(), new UnitConverter()};
         try {
             String line = br.readLine();
 
@@ -25,7 +25,7 @@ public class Runner {
         } finally {
             br.close();
         }
-        System.out.println(Runner.UNIT_VALUES.toString());
-
+        System.out.println(UNIT_VALUES.toString());
+        System.out.println(QUESTION_ANSWERS.toString());
     }
 }

@@ -1,5 +1,6 @@
 public class UnitConverter extends QuestionReader {
     private String question;
+
     @Override
     boolean isQuestion(String line) {
         question = line;
@@ -18,6 +19,6 @@ public class UnitConverter extends QuestionReader {
 
     @Override
     void displayAnswer() {
-
+        Runner.QUESTION_ANSWERS.add("Answer 1");
     }
 }
