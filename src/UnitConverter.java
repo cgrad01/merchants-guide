@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class UnitConverter extends QuestionReader {
     private String question;
-//    private ArrayList<CurrencyUnit> quantities;
     private String quantity = "";
     private Integer value;
 
@@ -21,13 +20,13 @@ public class UnitConverter extends QuestionReader {
     void setQuantity() {
         String[] words = question.split(" ");
         for (String word : words) {
-            if (Runner.UNIT_VALUES.containsKey(word)){
+            if (Runner.UNIT_VALUES.containsKey(word)) {
                 quantity += word + " ";
             }
         }
-        setValue();
     }
 
+    @Override
     void setValue() {
         String[] units = quantity.split(" ");
         String numeral = "";
