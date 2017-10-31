@@ -3,16 +3,7 @@ public class CurrencyUnit extends StatementReader {
     private String name;
     private Numeral value;
 
-    public CurrencyUnit(String statement) {
-        evaluate(statement);
-    }
-
-    private void evaluate(String statement) {
-        this.statement = statement;
-        if(isUnitStatement()) {
-            setValue();
-        }
-    }
+    public CurrencyUnit() {}
 
     public String getName() {
         return name;
@@ -23,12 +14,13 @@ public class CurrencyUnit extends StatementReader {
     }
 
     @Override
-    boolean isUnitStatement() {
-        return !statement.endsWith("?") && !isCreditStatement();
+    boolean isUnitStatement(String line) {
+        statement = line;
+        return !statement.endsWith("?") && !isCreditStatement(line);
     }
 
     @Override
-    boolean isCreditStatement() {
+    boolean isCreditStatement(String line) {
         return statement.contains("Credits");
     }
 
@@ -37,5 +29,6 @@ public class CurrencyUnit extends StatementReader {
         String[] nameAndValue = statement.split(" is ");
         name = nameAndValue[0];
         value = new Numeral(nameAndValue[1]);
+        Runner.UNIT_VALUES.put(name, value);
     }
 }

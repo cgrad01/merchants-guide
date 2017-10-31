@@ -1,12 +1,14 @@
+import com.sun.org.apache.xerces.internal.impl.dv.dtd.NMTOKENDatatypeValidator;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Runner {
 
-    public Runner() throws IOException {
-    }
+    public static HashMap<String, Numeral> UNIT_VALUES = new HashMap<String, Numeral>() {};
 
     private static void execute(Parsable parsable, String line) {
         parsable.parse(line);
@@ -14,17 +16,20 @@ public class Runner {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br =  new BufferedReader(new FileReader("./input.txt"));
-        ArrayList<CurrencyUnit> currencies = new ArrayList<>();
+        Parsable[] parsers = {new CurrencyUnit()};
         try {
             String line = br.readLine();
 
             while (line != null) {
-                CurrencyUnit unit = new CurrencyUnit(line);
-                currencies.add(unit);
+                for (Parsable parser : parsers) {
+                    parser.parse(line);
+                }
                 line = br.readLine();
             }
         } finally {
             br.close();
         }
+        System.out.println(Runner.UNIT_VALUES.toString());
+
     }
 }

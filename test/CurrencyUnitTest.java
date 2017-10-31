@@ -8,31 +8,41 @@ public class CurrencyUnitTest {
 
     @Test
     public void shouldEqualI() {
-        assertEquals(new Numeral("I"), new CurrencyUnit("glob is I").getValue());
+        CurrencyUnit unit = new CurrencyUnit();
+        unit.parse("glob is I");
+        assertEquals(new Numeral("I"), unit.getValue());
     }
 
     @Test
     public void shouldHaveNameGlob() {
-        assertEquals("glob", new CurrencyUnit("glob is I").getName());
+        CurrencyUnit unit = new CurrencyUnit();
+        unit.parse("glob is I");
+        assertEquals("glob", unit.getName());
     }
 
     @Test
     public void shouldEqualV() {
-        assertEquals(new Numeral("V"), new CurrencyUnit("prok is V").getValue());
+        CurrencyUnit unit = new CurrencyUnit();
+        unit.parse("prok is V");
+        assertEquals(new Numeral("V"), unit.getValue());
     }
 
     @Test
     public void shouldHaveNameProk() {
-        assertEquals("prok", new CurrencyUnit("prok is V").getName());
+        CurrencyUnit unit = new CurrencyUnit();
+        unit.parse("prok is V");
+        assertEquals("prok", unit.getName());
     }
 
     @Test
     public void shouldbeStatement() {
-        assertTrue( new CurrencyUnit("prok is V").isUnitStatement());
+        CurrencyUnit unit = new CurrencyUnit();
+        assertTrue( unit.isUnitStatement("prok is V"));
     }
 
     @Test
     public void shouldntbeQuestion() {
-        assertFalse( new CurrencyUnit("prok is V?").isUnitStatement());
+        CurrencyUnit unit = new CurrencyUnit();
+        assertFalse( unit.isUnitStatement("prok is V?"));
     }
 }
