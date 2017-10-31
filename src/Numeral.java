@@ -19,7 +19,19 @@ public class Numeral {
 
     public Numeral(String name) {
         this.name = name;
-        value = NUMERAL_VALUES.get(this.name);
+        setValue();
+    }
+
+    private void setValue() {
+        String[] digits = name.split("");
+        if (name.length() == 1){
+            value = NUMERAL_VALUES.get(name);
+        } else if (name.length() == 2){
+            value = new Numeral(digits[0]).add(new Numeral(digits[1]));
+        } else if(name.length() == 3){
+            Integer subtotal = new Numeral(digits[1] + digits[2]).value;
+            value = new Numeral(digits[0]).value + subtotal;
+        }
     }
 
     public Integer getValue() {
