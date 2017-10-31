@@ -1,12 +1,12 @@
 abstract class StatementReader implements Parsable {
     public void parse(String line){
-        if (isStatement()){
-            setQuantity();
+        if (isUnitStatement()){
+            isCreditStatement();
             setValue();
         }
     }
 
-    abstract boolean isStatement();
-    abstract void setQuantity();
+    abstract boolean isUnitStatement();
+    abstract boolean isCreditStatement();
     abstract void setValue();
 }

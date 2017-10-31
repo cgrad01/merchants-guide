@@ -28,11 +28,11 @@ public class CurrencyUnitTest {
 
     @Test
     public void shouldbeStatement() {
-        assertTrue( new CurrencyUnit("prok is V").isStatement());
+        assertTrue( new CurrencyUnit("prok is V").isUnitStatement());
     }
 
     @Test
     public void shouldntbeQuestion() {
-        assertFalse( new CurrencyUnit("prok is V?").isStatement());
+        assertFalse( new CurrencyUnit("prok is V?").isUnitStatement());
     }
 }

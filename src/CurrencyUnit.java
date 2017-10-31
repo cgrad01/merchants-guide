@@ -9,11 +9,8 @@ public class CurrencyUnit extends StatementReader {
 
     private void evaluate(String statement) {
         this.statement = statement;
-        if(isStatement()) {
-            String[] nameAndValue = new String[2];
-            nameAndValue = statement.split(" is ");
-            name = nameAndValue[0];
-            value = new Numeral(nameAndValue[1]);
+        if(isUnitStatement()) {
+            setValue();
         }
     }
 
@@ -26,17 +23,19 @@ public class CurrencyUnit extends StatementReader {
     }
 
     @Override
-    boolean isStatement() {
-        return !statement.endsWith("?");
+    boolean isUnitStatement() {
+        return !statement.endsWith("?") && !isCreditStatement();
     }
 
     @Override
-    void setQuantity() {
-
+    boolean isCreditStatement() {
+        return statement.contains("Credits");
     }
 
     @Override
     void setValue() {
-
+        String[] nameAndValue = statement.split(" is ");
+        name = nameAndValue[0];
+        value = new Numeral(nameAndValue[1]);
     }
 }
