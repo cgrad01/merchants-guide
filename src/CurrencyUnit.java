@@ -18,7 +18,7 @@ public class CurrencyUnit extends StatementReader {
         statement = line;
         return !statement.endsWith("?") && !isCreditStatement(line);
     }
-    
+
     @Override
     void setValue() {
         if(isUnitStatement(statement)) {
