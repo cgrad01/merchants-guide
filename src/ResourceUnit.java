@@ -11,7 +11,7 @@ public class ResourceUnit extends StatementReader {
 
     @Override
     void setValue() {
-        if(isCreditStatement(statement)) {
+        if(isCreditStatement(statement) && !statement.endsWith("?")) {
             String[] resourceAndValue = statement.split(" is ");
             String[] resourceAmount = resourceAndValue[0].split(" ");
             String numeral = "";
@@ -22,16 +22,9 @@ public class ResourceUnit extends StatementReader {
                     amount = new Numeral(numeral).getValue();
                 }
             }
-            value = Integer.parseInt(resourceAndValue[1].split(" ")[0])/amount;
+            String thing = resourceAndValue[1].split(" ")[0];
+            value = Integer.parseInt(thing)/amount;
             Runner.RESOURCE_VALUES.put(name, value);
         }
-    }
-
-    private String join(String[] array){
-        String result = "";
-        for (String s : array) {
-            result += s + " ";
-        }
-        return result;
     }
 }

@@ -4,6 +4,7 @@ public class UnitConverter extends QuestionReader {
     private String question;
     private String quantity = "";
     private Integer value;
+    private String subject;
 
     @Override
     boolean isQuestion(String line) {
@@ -13,11 +14,17 @@ public class UnitConverter extends QuestionReader {
 
     @Override
     void setSubject() {
-
+        subject = "";
+        for (String resource : Runner.RESOURCE_VALUES.keySet()) {
+            if(question.contains(resource)){
+                subject = resource;
+            }
+        }
     }
 
     @Override
     void setQuantity() {
+        quantity = "";
         String[] words = question.split(" ");
         for (String word : words) {
             if (Runner.UNIT_VALUES.containsKey(word)) {
@@ -38,6 +45,18 @@ public class UnitConverter extends QuestionReader {
 
     @Override
     void displayAnswer() {
-        Runner.QUESTION_ANSWERS.add(quantity + "is " + value);
+        if (question.contains("Credits")) {
+            Runner.QUESTION_ANSWERS.add(quantity.trim() + " " + subject.trim() + " is " + Runner.RESOURCE_VALUES.get(subject)*value);
+        } else {
+            Runner.QUESTION_ANSWERS.add(quantity.trim() + " is " + value);
+        }
+    }
+
+    @Override
+    void resetLocals() {
+        question = "";
+        quantity = "";
+        subject = "";
+        value = 0;
     }
 }

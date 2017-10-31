@@ -5,6 +5,7 @@ abstract class QuestionReader implements Parsable {
             setQuantity();
             setValue();
             displayAnswer();
+            resetLocals();
         }
     }
 
@@ -13,4 +14,5 @@ abstract class QuestionReader implements Parsable {
     abstract void setQuantity();
     abstract void setValue();
     abstract void displayAnswer();
+    abstract void resetLocals();
 }
