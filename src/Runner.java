@@ -1,5 +1,3 @@
-import com.sun.org.apache.xerces.internal.impl.dv.dtd.NMTOKENDatatypeValidator;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,7 +11,7 @@ public class Runner {
     public static ArrayList<String> QUESTION_ANSWERS = new ArrayList<>();
     public static void main(String[] args) throws IOException {
         BufferedReader br =  new BufferedReader(new FileReader("./input.txt"));
-        Parsable[] parsers = {new CurrencyUnit(), new UnitConverter(), new ResourceUnit()};
+        Parsable[] parsers = {new NumeralParser(), new ResourceValueParser(), new UnitConverter()};
         try {
             String line = br.readLine();
 
@@ -26,8 +24,8 @@ public class Runner {
         } finally {
             br.close();
         }
-        System.out.println(UNIT_VALUES.toString());
-        System.out.println(RESOURCE_VALUES.toString());
-        System.out.println(QUESTION_ANSWERS.toString());
+        for (String answer: QUESTION_ANSWERS) {
+            System.out.println(answer);
+        }
     }
 }

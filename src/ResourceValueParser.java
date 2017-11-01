@@ -1,8 +1,9 @@
-public class ResourceUnit extends StatementReader {
+public class ResourceValueParser extends StatementReader {
     private String statement;
     private String name;
     private Integer value;
     private Integer amount;
+
     @Override
     boolean isUnitStatement(String line) {
         statement = line;

@@ -1,9 +1,9 @@
-public class CurrencyUnit extends StatementReader {
+public class NumeralParser extends StatementReader {
     private String statement;
     private String name;
     private Numeral value;
 
-    public CurrencyUnit() {}
+    public NumeralParser() {}
 
     public String getName() {
         return name;
